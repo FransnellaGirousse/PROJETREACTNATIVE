@@ -1,19 +1,24 @@
-import { Text, TouchableOpacity, View, Image } from 'react-native';
-import React from 'react';
+import { Text, TouchableOpacity, View, Image, StyleSheet, TextInput, FlatList   } from 'react-native';
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import LottieView from 'lottie-react-native';
 import { 
 widthPercentageToDP as wp,
 heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { useNavigation } from '@react-navigation/native';
+
+import { FontAwesome } from '@expo/vector-icons'; 
+
+
 /*
-import LottieView from 'lottie-react-native';*/
-import Animated from 'react-native-reanimated';
+import LottieView from 'lottie-react-native';
+import Animated from 'react-native-reanimated';*/
 
 
 export default function WelcomeScreen() {
  //const Animation = useRef(null);
  const navigation = useNavigation();
+
   return (
     <View className="bg-[#f64e32] flex-1 justify-center items-center space-y-10 relative">
       <View>
@@ -54,6 +59,6 @@ export default function WelcomeScreen() {
 
     </View>
     
-    
+      
   );
 }
