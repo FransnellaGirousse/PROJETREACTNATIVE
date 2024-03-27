@@ -23,10 +23,53 @@ export default function WelcomeScreen() {
     <View className="bg-[#f64e32] flex-1 justify-center items-center space-y-10 relative">
       <View>
       
-      <Image source={require("../../assets/images/bg.jpg")} style = {{
-        width : wp(40),
-        height : hp(40),
+      <Image source={require("../../assets/images/bg.jpg")} style = 
+      {{
+        width : 100,
+        height : 100,
+        borderRadius : 20,
+        position : "absolute",
+        transform : [
+          {translateX : -50},
+          {translateY : -150},
+          {rotate : "-15deg"}
+        ]
       }}/>
+      <Image 
+      source={require("../../assets/images/bg1.png")}
+
+      style = 
+      {{
+        width : 100,
+        height : 100,
+        borderRadius : 20,
+        position : "absolute",
+        transform : [
+          {translateX : -150},
+          {translateY : 250},
+          {rotate : "-15deg"}
+        ]
+      }}
+      />
+
+<Image 
+      source={require("../../assets/images/bg2.png")}
+
+      style = 
+      {{
+        width : 100,
+        height : 100,
+        borderRadius : 20,
+        position : "absolute",
+        transform : [
+          {translateX : 70},
+          {translateY : 250},
+          {rotate : "15deg"}
+        ]
+      }}
+
+      />
+
     </View>
 
     <View className="flex items-center space-y-2">

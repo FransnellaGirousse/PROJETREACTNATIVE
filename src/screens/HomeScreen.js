@@ -1,5 +1,5 @@
 import { SafeAreaView,TouchableOpacity, ScrollView, Text, TextInput, View, FlatList } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import {
   MagnifyingGlassIcon,
@@ -11,16 +11,16 @@ import { view } from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import Categories from '../compnents/Categories';
 import { FontAwesome } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 
 
 export default function HomeScreen() {
 
-  const CuisineVirtuelle = () => {
-    // declaration state
-      const [recipes, setRecipes] = useState([]);
-      const [newRecipeName, setNewRecipeName] = useState('')
-    };
+  const navigation = useNavigation();
+
+  const [recipes, setRecipes] = useState([]);
+    const [newRecipeName, setNewRecipeName] = useState('')
     
   // Ajout des recettes
   const addRecipe = () => {
@@ -37,8 +37,16 @@ export default function HomeScreen() {
   
   // Inserer liste
   const renderItem = ({ item }) => (
-    <View style={styles.recipeItem}>
-      <Text style={styles.recipeName}>{item.name}</Text>
+    <View 
+    flexDirection= {'row'}
+    alignItems= {'center'}
+    justifyContent= {'space-between'}
+    borderWidth= {1}
+    borderColor= {'lightgray'}
+    borderRadius= {5}
+    padding= {10}
+    marginBottom= {10}>
+      <Text fontSize= {16}>{item.name}</Text>
       <TouchableOpacity onPress={() => removeRecipe(item.id)}>
         <FontAwesome name="trash" size={24} color="red" />
       </TouchableOpacity>
@@ -107,45 +115,35 @@ export default function HomeScreen() {
               justifyContent= {'center'}
               alignItems= {'center'}
           >
-
-            <Text fontSize={24} 
-              fontWeight={'bold'} 
-              marginBottom= {20}
-              >Hanampy
-            </Text>
+            
           <FontAwesome name="cutlery" size={100} color="black" />
-          <FontAwesome name="fire" size={50} color="#f64e32" />
-
-          <TextInput
-            borderWidth= {1}
-            borderColor= {'gray'}
-            borderRadius= {5}
-            padding= {10}
-            marginBottom= {10}
-            width= {'80%'}
-            //value={newRecipeName}
-            onChangeText={text => setNewRecipeName(text)}
-            placeholder="Nom de la recette"
-          />
 
             <TouchableOpacity 
-            backgroundColor= {'green'}
-                padding= {10}
-                borderRadius= {5}
-                marginBottom= {10} 
+            style ={{
+              backgroundColor : "#f64e32",
+              paddingVertical : hp(1.5),
+              paddingHorizontal : hp(5),
+              marginTop : hp(5),
+              borderRadius : hp(1.5),
+            }}
               onPress={addRecipe}>
                     <Text 
-                    color= {'white'}
-                fontWeight= {'bold'}
-                textAlign={'center'}
-                >Ajouter Recette</Text>
+                    style={{
+                      color : "#fff",
+                      fontSize : hp(2.2),
+                      fontWeight : "medium",
+            
+                    }}
+                    onPress={() => navigation.navigate("Add")}
+                > ➕Hanampy➕</Text>
                   </TouchableOpacity>
                   <FlatList
-                    //data={recipes}
+                    data={recipes}
                     renderItem={renderItem}
                     keyExtractor={item => item.id.toString()}
                     width= {'80%'}
                   />
+
           </View>
         </ScrollView>
       </SafeAreaView>
