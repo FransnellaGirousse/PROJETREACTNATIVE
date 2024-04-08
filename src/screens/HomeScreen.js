@@ -120,11 +120,19 @@ export default function HomeScreen() {
 
             <TouchableOpacity 
             style ={{
+              position: 'absolute',
+              bottom: hp(-2), 
+              right: hp(2),
               backgroundColor : "#f64e32",
               paddingVertical : hp(1.5),
               paddingHorizontal : hp(5),
               marginTop : hp(5),
-              borderRadius : hp(1.5),
+              borderRadius : hp(8),
+              width: hp(16),
+              height: hp(16), 
+              alignItems: 'center',
+              justifyContent: 'center',
+
             }}
               onPress={addRecipe}>
                     <Text 
@@ -135,7 +143,7 @@ export default function HomeScreen() {
             
                     }}
                     onPress={() => navigation.navigate("Add")}
-                > ➕Hanampy➕</Text>
+                > ➕</Text>
                   </TouchableOpacity>
                   <FlatList
                     data={recipes}
