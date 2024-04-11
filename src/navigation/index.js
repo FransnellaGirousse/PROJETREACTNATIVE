@@ -22,6 +22,8 @@ export default function AppNavigation() {
           <stack.Screen name="Welcome" component={WelcomeScreen} />
             <stack.Screen name="Home" component={HomeScreen} />
             <stack.Screen name="Add" component={RecipeDetailsScreen} />
+            <stack.Screen name="RecipeDetails" component={RecipeDetailsScreen} />
+
 
             
 

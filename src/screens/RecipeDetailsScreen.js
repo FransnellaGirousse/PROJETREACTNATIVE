@@ -4,9 +4,6 @@ import { FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from '@react-navigation/native';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
-
-
-
 export default function RecipeDetailsScreen() {
   const navigation = useNavigation();
 
@@ -58,27 +55,26 @@ export default function RecipeDetailsScreen() {
 
   // Render des éléments de la FlatList
   const renderItem = ({ item }) => (
-    <View
-      style={{
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        borderWidth: 1,
-        borderColor: 'lightgray',
-        borderRadius: 5,
-        padding: 10,
-        marginBottom: 10
-      }}>
-      <Text>{item.name}</Text>
-      <TouchableOpacity onPress={() => removeRecipe(item.id)}>
-        <FontAwesome name="trash" size={24} color="red" />
-      </TouchableOpacity>
-    </View>
+    <Pressable onPress={() => navigation.navigate("RecipeDetails", item)}>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          borderWidth: 1,
+          borderColor: 'lightgray',
+          borderRadius: 5,
+          padding: 10,
+          marginBottom: 10
+        }}>
+        <Text>{item.name}</Text>
+        <FontAwesome name="chevron-right" size={24} color="black" />
+      </View>
+    </Pressable>
   );
 
   return (
-	<View className="mx-4 flex-row items-center border rounded-x1 border-black p-[6px]">
- 
+    <View className="mx-4 flex-row items-center border rounded-x1 border-black p-[6px]">
       <View style={{ paddingHorizontal: 16 }}>
         {/* Autres champs pour la recette */}
         <TextInput
